@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             android:singleLine="true"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:text="@{viewModel.username}"/>
 
         <EditText
             android:id="@+id/password"
@@ -34,12 +35,13 @@
             android:background="@android:color/white"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:text="@{viewModel.password}"/>
 
         <Button
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:background="@{viewModel.getBoolean ? @android:color/holo_green_dark : @android:color/darker_gray}"
+            android:background="@{viewModel.color}"
             android:onClick="login"
             android:text="@string/login" />
     </LinearLayout>

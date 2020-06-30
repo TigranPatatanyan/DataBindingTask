@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="fields"
+            name="viewModel"
             type="com.tigran.databindingtask.MainViewModel" />
     </data>
 
@@ -19,13 +19,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{fields.username}"
+            android:text="@{viewModel.username}"
+            android:textColor="@android:color/black"
             android:textSize="32sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{fields.password}"
+            android:text="@{viewModel.password}"
+            android:textColor="@android:color/black"
             android:textSize="32sp" />
 
     </LinearLayout>

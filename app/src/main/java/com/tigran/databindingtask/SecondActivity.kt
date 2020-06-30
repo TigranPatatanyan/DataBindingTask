@@ -1,17 +1,17 @@
-package com.tigran.databinding
+package com.tigran.databindingtask
 
-import MainViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.tigran.databindingtask.R
 import com.tigran.databindingtask.databinding.ActivitySecondBinding
 
-open class SecondActivity : AppCompatActivity() {
+class SecondActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySecondBinding
-    lateinit var viewModel: MainViewModel
+    lateinit var view_model: MainViewModel
+    lateinit var userName:String
+    lateinit var passWord:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,10 +19,15 @@ open class SecondActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        view_model = ViewModelProvider(this).get(MainViewModel::class.java)
+        userName = intent.getStringExtra("username")
+        passWord = intent.getStringExtra("password")
+        view_model.changeUsernameText(userName)
+        view_model.changePasswordText(passWord)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
+        binding.viewModel=view_model
         binding.executePendingBindings()
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.changeUsernameText(intent.getStringExtra("username"))
-        viewModel.changePasswordText(intent.getStringExtra("password"))
+
+
     }
 }
