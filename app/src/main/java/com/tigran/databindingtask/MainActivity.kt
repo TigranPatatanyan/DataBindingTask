@@ -14,15 +14,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var view_model: MainViewModel
+    lateinit var viewModel: MainViewModel
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        view_model = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.viewModel = view_model
-        binding.executePendingBindings()
+        binding.lifecycleOwner = this
+        binding.viewmodel = viewModel
         initTextWatchers()
     }
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                view_model.changeUsernameText(p0.toString())
+                viewModel.changeUsernameText(p0.toString())
             }
         })
         password.addTextChangedListener(object : TextWatcher {
@@ -46,16 +46,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                view_model.changePasswordText(p0.toString())
+                viewModel.changePasswordText(p0.toString())
             }
         })
     }
 
     fun login(view: View) {
-        if (view_model.checkTextLength()) {
+        if (viewModel.color.value == Color.GREEN) {
             val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("username", view_model.username.value)
-            intent.putExtra("password", view_model.password.value)
+            intent.putExtra("username", viewModel.username.value)
             startActivity(intent)
             finish()
         } else {

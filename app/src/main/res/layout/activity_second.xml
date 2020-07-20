@@ -6,29 +6,59 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.tigran.databindingtask.MainViewModel" />
+            name="viewmodel"
+            type="com.tigran.databindingtask.UserViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:padding="16dp"
         tools:context=".SecondActivity">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/user_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.username}"
-            android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            android:layout_marginEnd="8dp"
+            android:text="@{viewmodel.username}"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="32sp"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/likes"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/likes"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.password}"
-            android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            android:layout_marginStart="8dp"
+            android:gravity="center_horizontal"
+            android:text="@{Integer.toString(viewmodel.likes)}"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/user_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/like"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:onClick="@{() -> viewmodel.onLike()}"
+            android:text="@string/like"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/likes"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="@id/likes"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

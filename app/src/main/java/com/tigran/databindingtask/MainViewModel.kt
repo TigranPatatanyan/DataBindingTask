@@ -1,33 +1,39 @@
 package com.tigran.databindingtask
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel() : ViewModel() {
 
-    var username: MutableLiveData<String> = MutableLiveData("")
-    var password: MutableLiveData<String> = MutableLiveData("")
-    var color: MutableLiveData<Int> = MutableLiveData(R.color.colorGrey)
+    var _username: MutableLiveData<String> = MutableLiveData("")
+    var _password: MutableLiveData<String> = MutableLiveData("")
+    var _color: MutableLiveData<Color> = MutableLiveData(Color.RED)
+
+    var username: LiveData<String> = _username
+    var password: LiveData<String> = _password
+    var color: LiveData<Color> = _color
 
     fun changeUsernameText(userName: String) {
-        username.value = userName
-        changeColor(checkTextLength())
+        _username.value = userName
+        changeColor()
     }
 
     fun changePasswordText(passWord: String) {
-        password.value = passWord
-        changeColor(checkTextLength())
+        _password.value = passWord
+        changeColor()
     }
 
-    private fun changeColor(boolean: Boolean) {
-        if (boolean) {
-            color.value = R.color.colorGreen
+    private fun changeColor() {
+        if (_username.value!!.length >= 6 && _password.value!!.length >= 6) {
+            _color.value = Color.GREEN
         } else {
-            color.value = R.color.colorGrey
+            _color.value = Color.RED
         }
     }
+}
 
-    fun checkTextLength(): Boolean {
-        return username.value!!.length > 6 && password.value!!.length > 6
-    }
+enum class Color(val rgb: Int) {
+    RED(0xFF0000),
+    GREEN(0x00FF00),
 }
