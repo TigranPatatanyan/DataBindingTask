@@ -19,6 +19,8 @@
         tools:context=".MainActivity">
 
         <EditText
+            android:gravity="center"
+            android:hint="username"
             android:id="@+id/user_name"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -29,6 +31,8 @@
             android:textSize="32sp" />
 
         <EditText
+            android:gravity="center"
+            android:hint="password"
             android:id="@+id/password"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
