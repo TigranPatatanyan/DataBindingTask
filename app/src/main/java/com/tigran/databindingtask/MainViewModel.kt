@@ -1,5 +1,7 @@
 package com.tigran.databindingtask
 
+import android.graphics.Color
+import android.graphics.Color.RED
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,11 +10,11 @@ class MainViewModel() : ViewModel() {
 
     var _username: MutableLiveData<String> = MutableLiveData("")
     var _password: MutableLiveData<String> = MutableLiveData("")
-    var _color: MutableLiveData<Color> = MutableLiveData(Color.RED)
+    var _color: MutableLiveData<Int> = MutableLiveData(RED)
 
     var username: LiveData<String> = _username
     var password: LiveData<String> = _password
-    var color: LiveData<Color> = _color
+    var color: LiveData<Int> = _color
 
     fun changeUsernameText(userName: String) {
         _username.value = userName
@@ -33,7 +35,7 @@ class MainViewModel() : ViewModel() {
     }
 }
 
-enum class Color(val rgb: Int) {
-    RED(0xFF0000),
-    GREEN(0x00FF00),
-}
+//enum class Color(val rgb: Int) {
+//    RED(0xFF0000),
+//    GREEN(0x00FF00),
+//}

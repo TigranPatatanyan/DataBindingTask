@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="viewmodel"
             type="com.tigran.databindingtask.MainViewModel" />
     </data>
 
@@ -23,9 +23,10 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
+            android:padding="4dp"
             android:singleLine="true"
-            android:textSize="32sp"
-            android:text="@{viewModel.username}"/>
+            android:text="@{viewmodel.username}"
+            android:textSize="32sp" />
 
         <EditText
             android:id="@+id/password"
@@ -34,15 +35,18 @@
             android:layout_margin="16dp"
             android:background="@android:color/white"
             android:inputType="textPassword"
+            android:padding="4dp"
             android:singleLine="true"
-            android:textSize="32sp"
-            android:text="@{viewModel.password}"/>
+            android:text="@{viewmodel.password}"
+            android:textSize="32sp" />
 
         <Button
+            android:id="@+id/login"
             android:layout_width="100dp"
             android:layout_height="48dp"
-            android:background="@{viewModel.color}"
+            android:backgroundTint="@{viewmodel.color}"
             android:onClick="login"
-            android:text="@string/login" />
+            android:text="@string/login"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </layout>

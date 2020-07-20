@@ -1,6 +1,7 @@
 package com.tigran.databindingtask
 
 import android.content.Intent
+import android.graphics.Color.GREEN
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        if (viewModel.color.value == Color.GREEN) {
+        if (viewModel.color.value == GREEN) {
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("username", viewModel.username.value)
             startActivity(intent)
