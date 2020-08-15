@@ -20,14 +20,15 @@ class UserViewModel : ViewModel() {
     var color: LiveData<Int> = _color
 
     fun onLike() {
-        _likes.value = (_likes.value ?: 0) + 1
-        setColor(_likes.value!!)
+        val likes: Int = (_likes.value ?: 0) + 1
+        _likes.value = likes
+        setColor(likes)
     }
 
-    fun setColor(like: Int) {
+    private fun setColor(like: Int) {
         when {
-            like > 10 -> _color.value = RED
-            like > 5 -> _color.value = YELLOW
+            like > 9 -> _color.value = RED
+            like > 4 -> _color.value = YELLOW
             else -> _color.value = BLUE
         }
     }

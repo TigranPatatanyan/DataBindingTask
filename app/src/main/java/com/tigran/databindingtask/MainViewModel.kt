@@ -1,6 +1,6 @@
 package com.tigran.databindingtask
 
-import android.graphics.Color
+import android.graphics.Color.GREEN
 import android.graphics.Color.RED
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,14 +28,9 @@ class MainViewModel() : ViewModel() {
 
     private fun changeColor() {
         if (_username.value!!.length >= 6 && _password.value!!.length >= 6) {
-            _color.value = Color.GREEN
+            _color.value = GREEN
         } else {
-            _color.value = Color.RED
+            _color.value = RED
         }
     }
 }
-
-//enum class Color(val rgb: Int) {
-//    RED(0xFF0000),
-//    GREEN(0x00FF00),
-//}

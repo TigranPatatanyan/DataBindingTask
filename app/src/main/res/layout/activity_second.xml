@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewmodel"
+            name="userviewmodel"
             type="com.tigran.databindingtask.UserViewModel" />
     </data>
 
@@ -22,8 +22,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="@{viewmodel.username}"
-            android:textColor="@{viewmodel.color}"
+            android:text="@{userviewmodel.username}"
+            android:textColor="@{userviewmodel.color}"
             android:textSize="32sp"
             android:textStyle="italic"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:gravity="center_horizontal"
-            android:text="@{Integer.toString(viewmodel.likes)}"
-            android:textColor="@{viewmodel.color}"
+            android:text="@{Integer.toString(userviewmodel.likes)}"
+            android:textColor="@{userviewmodel.color}"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@id/user_name"
@@ -48,17 +48,16 @@
             android:id="@+id/like"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@android:color/holo_blue_light"
-            android:onClick="@{() -> viewmodel.onLike()}"
+            android:onClick="@{() -> userviewmodel.onLike()}"
             android:text="@string/like"
-            android:textColor="@{viewmodel.color}"
+            android:textColor="@{userviewmodel.color}"
             android:textSize="32sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/likes"
-            android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="@id/likes"
             app:layout_constraintRight_toRightOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/likes" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

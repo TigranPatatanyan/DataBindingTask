@@ -9,7 +9,7 @@ import com.tigran.databindingtask.databinding.ActivitySecondBinding
 class SecondActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySecondBinding
-    lateinit var viewModel: UserViewModel
+    lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +17,10 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
-        binding.viewmodel = viewModel
+        binding.userviewmodel = userViewModel
         binding.lifecycleOwner = this
-        viewModel.setUsername(intent.getStringExtra("username"))
+        userViewModel.setUsername(intent.getStringExtra("username"))
     }
 }
